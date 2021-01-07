@@ -9,9 +9,9 @@ import (
 	"time"
 )
 
-
 // Create a new type of 'deck'
 // which is a slice of strings
+
 type deck []string
 
 func newDeck() deck {
@@ -22,7 +22,7 @@ func newDeck() deck {
 
 	for _, suit := range cardSuits {
 		for _, value := range cardValues {
-			cards = append(cards, value+" of "+suit)
+			cards = append(cards, value + " of " + suit)
 		}
 	}
 
@@ -36,7 +36,7 @@ func (d deck) print() {
 	}
 }
 
-func deal(d deck, handSize int) (deck, deck) {
+func deal(d deck, handSize int) (deck,deck) {
 	return d[:handSize], d[handSize:]
 }
 
@@ -44,8 +44,8 @@ func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
 
-func (d deck) saveToFile(filename string) error {
-	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
+func (d deck) saveToFile(filename string) error  {
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)	
 }
 
 func newDeckFromFile(filename string) deck {
@@ -65,6 +65,6 @@ func (d deck) shuffle() {
 	for i := range d {
 		newPosition := r.Intn(len(d) - 1)
 
-		d[i], d[newPosition] = d[newPosition], d[i]
+		d[i], d[newPosition] = d[newPosition] , d[i]
 	}
 }
